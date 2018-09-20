@@ -117,7 +117,8 @@ public class PokemonBank {
 					 * - String
 					 * - the output stream
 					 */
-					String listPokemon = arrayList<Pokemon> 
+					for(int i = 0 ; i < pokemons.size();i++)
+						ObjOut.writeObject(pokemons.get(i).toString());
 					
 				}
 				break;
@@ -129,13 +130,13 @@ public class PokemonBank {
 				 * If the client sent a STORE request, the next object in the stream should be a Pokémon.
 				 * You need to retrieve that Pokémon and add it to the ArrayList.
 				 */
-				
+				this.pokemons.add((Pokemon)ObjIn.readObject());
 				
 				/*
 				 * TODO
 				 * Then, send a message to the client so he knows his Pokémon is safe.
 				 */
-				
+				ObjOut.writeObject(pokemons.get(pokemons.size()-1).toString() + " a ete envoye");
 
 				break;
 				
